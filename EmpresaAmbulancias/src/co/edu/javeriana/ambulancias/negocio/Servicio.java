@@ -8,5 +8,7 @@ package co.edu.javeriana.ambulancias.negocio;
  *
  */
 public class Servicio {
+	private static long CONSECUTIVO=0;
+	private String paciente;
 
 }
