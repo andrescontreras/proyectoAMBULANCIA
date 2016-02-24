@@ -8,7 +8,14 @@ package co.edu.javeriana.ambulancias.negocio;
  *
  */
 public class Servicio {
-	private static long CONSECUTIVO=0;
+	private long CONSECUTIVO=0;
+	private date horaSolicitud;
 	private String paciente;
-
+	private String tipoServicio;
+	private String telefono;
+	private String estado;
+	public void asignarDireccion()
+	{
+		
+	}
 }
