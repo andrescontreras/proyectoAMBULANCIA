@@ -32,11 +32,11 @@ public class Ambulancia {
 		this.posicionCarrera = posicionCarrera;
 	}
 	
-	public Ambulancia(){
+	public Ambulancia(int codigo2, String placa2, String tipoDotacion2){
 		super();
-		this.codigo=0;
-		this.placa="-----";
-		this.tipoDotacion="-----";
+		this.codigo=codigo2;
+		this.placa=placa2;
+		this.tipoDotacion=tipoDotacion;
 		this.horaPosicion = new GregorianCalendar();
 		this.posicionCalle=0;
 		this.posicionCarrera=0;
@@ -154,8 +154,8 @@ public class Ambulancia {
 	}
 	
 // ----  METODOS EXTRA
-	public void agregarServicio(){
-		
+	public void agregarServicio(Servicio servicio){
+		servicios.add(servicio);
 	}
 
 	
