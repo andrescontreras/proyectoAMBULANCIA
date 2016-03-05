@@ -57,8 +57,10 @@ public class EmpresaAmbulancias {
 		servicios.add(servicio);
 		return servicio.getCodigo;
 	}
-	public String asignarServicio(){
+	public String asignarServicio(int codigo){
+		Servicio ser=buscarServicio(codigo);
 		
+		construirAmbulanciasDisponiblesServicio(ser);
 		return "";
 	}
 	public boolean finalizarServicio(){
@@ -74,12 +76,38 @@ public class EmpresaAmbulancias {
 		}
 		return null;
 	}
-	private Servicio buscarServicio(){
+	private Servicio buscarServicio(int codigo){
 		Servicio ser =new Servicio();
 		return ser;
 	}
-	private list<Ambulancia> construirAmbulanciasDisponiblesServicio(){
-		
+	private List<Ambulancia> construirAmbulanciasDisponiblesServicio(Servicio servicio){
+		boolean noAsociado=true;
+		List<Ambulancia>ambDisponibles=new ArrayList<Ambulancia>();
+		// reisar si la ambulancia tiene servicios asociados
+		for(Ambulancia amb:this.ambulancias){
+			noAsociado=true;
+			List<Servicio> serAmb =amb.getServicios();
+			// revisar cada servicio de esa ambulancia
+			for(Servicio serAmbulancia:serAmb){
+				if( serAmb.getEstado().ecuals("ASIGNADO")){
+					noAsociado=false;
+				}
+			}
+			/*
+			 * se revisa si la ambulancia cumple con los requisitos
+			 * 1) ambulancia == no asignado && tipo Servicio == urgencia
+			 * 2) ambulancia == no asignado && tipo servicio == emergencia && ambulancia == alta UCI*/
+			if(noSignado == true &&((servicio.getTiposervicio().ecuals("EMERGENCIA")&& 
+					amb.getTipoDotacion().equals("ALTA_UCI"))||servicio.getTiposervicio().ecuals("URGENCIA") )){
+				ambDisponibles.add(amb);
+				
+			}
+			
+		}
+		// se va a asignar la ambulancia con menor distancia al paciente
+		for(Ambulancia amb:this.ambulancias){
+			if(amb.)
+		}
 	}
 	private Ambulancia calcularAmbulanciaCercana(){
 		Ambulancia amb = new Ambulancia();
