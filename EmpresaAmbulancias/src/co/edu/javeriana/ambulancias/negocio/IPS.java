@@ -11,6 +11,7 @@ public class IPS {
 
 	String nombre;
 	String tipoAtencion;
+	Direccion direccion;
 	public void asignarDireccion(){
 		
 	}

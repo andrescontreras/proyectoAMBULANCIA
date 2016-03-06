@@ -25,7 +25,8 @@ public class EmpresaAmbulancias {
 	}
 // ---- metodos extra	
 	public void agregarIPS(String nombre,String tipoAtencion,String tipoDireccion,int calle ,int carrera, int numero){
-		
+		IPS ips=new IPS(nombre,tipoAtencion,tipoDireccion,calle,carrera,numero);
+		losIPS.add(ips);
 	}
 	public void agregarAmbulancia(int codigo,String placa,String tipoDotacion){
 		Ambulancia ambulancia = new Ambulancia(codigo,placa,tipoDotacion);
@@ -77,8 +78,12 @@ public class EmpresaAmbulancias {
 		return null;
 	}
 	private Servicio buscarServicio(int codigo){
-		Servicio ser =new Servicio(null, null, null, null, 0, 0, 0);
-		return ser;
+		for(Servicio servicio:this.servicios){
+			if(servicio.getCodigo()==codigo){
+				return servicio;
+			}
+		}
+		return null;
 	}
 	private List<Ambulancia> construirAmbulanciasDisponiblesServicio(Servicio servicio){
 		boolean noAsociado=true;
@@ -121,9 +126,19 @@ public class EmpresaAmbulancias {
 		}
 		return minAmbulancia;
 	}
-	private IPS calcularIPSmasCercano(){
-		IPS ip=new IPS();
-		return ip;
+	private IPS calcularIPSmasCercano(int calle ,int carrera){
+		int min=1000;
+		int distancia=0;
+		IPS minIps=new IPS();
+		for(IPS ips:losIPS){
+			distancia=(int) calcularDistancia(ips.direccion.getCalle(),ips.direccion.getCarrera(),calle,carrera); 
+			if(distancia<min){
+				min=distancia;
+				minIps=ips;
+			}
+		}
+		return minIps;
+		
 	}
 	private long calcularDistancia(int calle,int carrera,int calle1,int carrera1){
 		int distancia=0 , diferenciaCalle , diferenciaCarrera;

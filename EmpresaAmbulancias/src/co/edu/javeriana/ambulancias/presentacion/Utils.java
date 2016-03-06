@@ -1,4 +1,4 @@
-package co.edu.javeriana.empleados.presentacion;
+package co.edu.javeriana.ambulancias.presentacion;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import  java.util.StringTokenizer;
