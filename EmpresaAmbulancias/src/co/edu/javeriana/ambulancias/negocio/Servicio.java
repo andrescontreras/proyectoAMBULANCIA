@@ -19,7 +19,16 @@ public class Servicio {
 	private String estado;
 	private Direccion direccion;
 	private Ambulancia ambulancia;
+	private IPS ips;
 	
+	public IPS getIps() {
+		return ips;
+	}
+
+	public void setIps(IPS ips) {
+		this.ips = ips;
+	}
+
 	public Servicio(String paciente, String tipoServicio, String telefono,String tipoDireccion,int calle,int
 			carrera,int numero) {
 		
