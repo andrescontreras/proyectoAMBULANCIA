@@ -11,6 +11,7 @@ import java.util.GregorianCalendar;
  */
 public class Servicio {
 	private static long CONSECUTIVO=0;
+	private long codigo;
 	private GregorianCalendar horaSolicitud;
 	private String paciente;
 	private String tipoServicio;
@@ -22,7 +23,7 @@ public class Servicio {
 	public Servicio(String paciente, String tipoServicio, String telefono,String tipoDireccion,int calle,int
 			carrera,int numero) {
 		
-		this.CONSECUTIVO=CONSECUTIVO++;
+		this.codigo=CONSECUTIVO++;
 		this.paciente = paciente;
 		this.tipoServicio = tipoServicio;
 		this.telefono = telefono;
@@ -31,6 +32,20 @@ public class Servicio {
 		this.horaSolicitud=new GregorianCalendar();
 		this.estado="NO_ASIGNADO";
 		
+	}
+	
+	/**
+	 * @return the codigo
+	 */
+	public long getCodigo() {
+		return codigo;
+	}
+
+	/**
+	 * @param codigo the codigo to set
+	 */
+	public void setCodigo(long codigo) {
+		this.codigo = codigo;
 	}
 
 	public GregorianCalendar getHoraSolicitud() {
