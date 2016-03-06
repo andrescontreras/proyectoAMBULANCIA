@@ -53,9 +53,9 @@ public class EmpresaAmbulancias {
 		 * -- horaSolisitud
 		 * -- estado por defecto (" NO_ASIGNADO")*/
 	
-		Servicio servicio=new Servicio(paciente,tServicio,tDireccion,telefono,calle,carrera,numero);
+		Servicio servicio(paciente,tServicio,tDireccion,telefono,calle,carrera,numero);
 		servicios.add(servicio);
-		return servicio.getCodigo();
+		return servicio.getCodigo;
 	}
 	public String asignarServicio(int codigo){
 		Servicio ser=buscarServicio(codigo);
@@ -89,7 +89,7 @@ public class EmpresaAmbulancias {
 			List<Servicio> serAmb =amb.getServicios();
 			// revisar cada servicio de esa ambulancia
 			for(Servicio serAmbulancia:serAmb){
-				if( serAmbulancia.getEstado().ecuals("ASIGNADO")){
+				if( serAmb.getEstado().ecuals("ASIGNADO")){
 					noAsociado=false;
 				}
 			}
@@ -130,14 +130,15 @@ public class EmpresaAmbulancias {
 		diferenciaCalle=calle-carrera;
 		diferenciaCarrera=carrera-carrera1;
 		if(diferenciaCalle < 0){
-			diferenciaCalle= diferenciaCalle * -1;
+			diferenciaCalle=diferenciaCalle *-1;
+			
 		}
-		if(diferenciaCarrera < 0){
-			diferenciaCarrera = diferenciaCarrera * -1;
+		if(diferenciaCarrera<0){
+			diferenciaCarrera=diferenciaCarrera*-1;
 		}
+		distancia=diferenciaCalle+diferenciaCarrera;
 		
-		
-		return 10;
+		return distancia;
 	}
 
 	
