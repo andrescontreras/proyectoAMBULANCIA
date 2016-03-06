@@ -104,20 +104,35 @@ public class EmpresaAmbulancias {
 			}
 			
 		}
-		// se va a asignar la ambulancia con menor distancia al paciente
-		for(Ambulancia amb:this.ambulancias){
-			if(amb.)
-		}
+		return ambDisponibles;
 	}
-	private Ambulancia calcularAmbulanciaCercana(){
-		Ambulancia amb = new Ambulancia();
-		return amb;
+	/*
+	 * */
+	private Ambulancia calcularAmbulanciaCercana(List<Ambulancia> ambulancias,int calle ,int carrera){
+		int min=1000;
+		int distancia=0;
+		Ambulancia minAmbulancia;
+		for(Ambulancia amb:ambulancias){
+			distancia=(int) calcularDistancia(amb.getPosicionCalle(),amb.getPosicionCarrera(),calle,carrera);
+			if(distancia<min){
+				min=distancia;
+				minAmbulancia=amb;
+			}
+		}
+		
 	}
 	private IPS calcularIPSmasCercano(){
 		IPS ip=new IPS();
 		return ip;
 	}
-	private long calcularDistancia(){
+	private long calcularDistancia(int calle,int carrera,int calle1,int carrera1){
+		int distancia=0 , diferenciaCalle , diferenciaCarrera;
+		diferenciaCalle=calle-carrera;
+		diferenciaCarrera=carrera-carrera1;
+		if(diferenciaCalle < 0){
+			
+		}
+		
 		return 10;
 	}
 
