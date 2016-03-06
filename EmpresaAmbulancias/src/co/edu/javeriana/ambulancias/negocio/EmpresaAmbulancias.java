@@ -53,9 +53,9 @@ public class EmpresaAmbulancias {
 		 * -- horaSolisitud
 		 * -- estado por defecto (" NO_ASIGNADO")*/
 	
-		Servicio servicio(paciente,tServicio,tDireccion,telefono,calle,carrera,numero);
+		Servicio servicio= new Servicio(paciente,tServicio,tDireccion,telefono,calle,carrera,numero);
 		servicios.add(servicio);
-		return servicio.getCodigo;
+		return (int) servicio.getCodigo();
 	}
 	public String asignarServicio(int codigo){
 		Servicio ser=buscarServicio(codigo);
@@ -77,7 +77,7 @@ public class EmpresaAmbulancias {
 		return null;
 	}
 	private Servicio buscarServicio(int codigo){
-		Servicio ser =new Servicio();
+		Servicio ser =new Servicio(null, null, null, null, 0, 0, 0);
 		return ser;
 	}
 	private List<Ambulancia> construirAmbulanciasDisponiblesServicio(Servicio servicio){
@@ -89,7 +89,7 @@ public class EmpresaAmbulancias {
 			List<Servicio> serAmb =amb.getServicios();
 			// revisar cada servicio de esa ambulancia
 			for(Servicio serAmbulancia:serAmb){
-				if( serAmb.getEstado().ecuals("ASIGNADO")){
+				if( serAmbulancia.getEstado().equals("ASIGNADO")){
 					noAsociado=false;
 				}
 			}
@@ -97,8 +97,8 @@ public class EmpresaAmbulancias {
 			 * se revisa si la ambulancia cumple con los requisitos
 			 * 1) ambulancia == no asignado && tipo Servicio == urgencia
 			 * 2) ambulancia == no asignado && tipo servicio == emergencia && ambulancia == alta UCI*/
-			if(noSignado == true &&((servicio.getTiposervicio().ecuals("EMERGENCIA")&& 
-					amb.getTipoDotacion().equals("ALTA_UCI"))||servicio.getTiposervicio().ecuals("URGENCIA") )){
+			if(noAsociado == true &&((servicio.getTipoServicio().equals("EMERGENCIA")&& 
+					amb.getTipoDotacion().equals("ALTA_UCI"))||servicio.getTipoServicio().equals("URGENCIA") )){
 				ambDisponibles.add(amb);
 				
 			}
@@ -111,7 +111,7 @@ public class EmpresaAmbulancias {
 	private Ambulancia calcularAmbulanciaCercana(List<Ambulancia> ambulancias,int calle ,int carrera){
 		int min=1000;
 		int distancia=0;
-		Ambulancia minAmbulancia;
+		Ambulancia minAmbulancia=new Ambulancia(0, null, null);
 		for(Ambulancia amb:ambulancias){
 			distancia=(int) calcularDistancia(amb.getPosicionCalle(),amb.getPosicionCarrera(),calle,carrera);
 			if(distancia<min){
@@ -119,7 +119,7 @@ public class EmpresaAmbulancias {
 				minAmbulancia=amb;
 			}
 		}
-		
+		return minAmbulancia;
 	}
 	private IPS calcularIPSmasCercano(){
 		IPS ip=new IPS();
