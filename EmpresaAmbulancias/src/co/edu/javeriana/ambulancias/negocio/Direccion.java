@@ -36,5 +36,5 @@ public class Direccion {
 		this.numero = numero;
 	}
 	private int numero;
-
+//---- fin de la clase
 }
